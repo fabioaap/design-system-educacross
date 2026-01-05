@@ -59,10 +59,18 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 - Erros `no-constant-binary-expression` em testes
 - Path do lint script no Storybook
 - Configuração ESLint para permitir hooks em stories
+- Warning `exhaustive-deps` no Accordion com useMemo
 
 ### Changed
 - Warnings `no-explicit-any` resolvidos com tipos corretos
-- Warnings `exhaustive-deps` com comentários explicativos
+- Warnings `react-refresh/only-export-components` desabilitados para biblioteca
+- Configuração `type: module` adicionada ao package.json raiz
+
+### Tests
+- 380 testes unitários cobrindo todos os componentes
+- Testes para Accordion (13), Avatar (17), DropdownMenu (21), Icon (29)
+- Testes para Pagination (17), Popover (15), Tabs (12), Tooltip (13)
+- Play functions em 6 stories: Dialog, Toast, Select, Accordion, Tabs, DropdownMenu
 
 ## [Unreleased]
 
