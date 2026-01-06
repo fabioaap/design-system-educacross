@@ -20,6 +20,7 @@ const selectVariants = cva(
             variant: {
                 default: "",
                 error: "border-destructive focus:ring-destructive",
+                primary: "border-primary text-primary bg-primary/5 font-medium focus:ring-primary",
             },
             size: {
                 sm: "h-9 px-2 text-xs",

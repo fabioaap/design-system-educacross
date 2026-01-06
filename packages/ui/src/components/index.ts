@@ -3,6 +3,30 @@ export { Button, buttonVariants, type ButtonProps } from "./Button";
 export { Input, inputVariants, type InputProps } from "./Input";
 export { Label, labelVariants, type LabelProps } from "./Label";
 
+// Theme
+export {
+    ThemeSwitcher,
+    ThemeProvider,
+    useTheme,
+    themeSwitcherVariants,
+    type ThemeSwitcherProps,
+    type ThemeProviderProps,
+    type Theme,
+    type ResolvedTheme,
+} from "./ThemeSwitcher";
+
+// Navigation
+export {
+    Sidebar,
+    SidebarItem,
+    SidebarSubItem,
+    sidebarVariants,
+    sidebarItemVariants,
+    type SidebarProps,
+    type SidebarItemProps,
+    type SidebarSubItemProps,
+} from "./Sidebar";
+
 // P2 Components
 export {
     Card,

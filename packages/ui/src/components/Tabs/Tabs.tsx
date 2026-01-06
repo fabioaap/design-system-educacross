@@ -16,6 +16,7 @@ const tabsListVariants = cva(
                 default: "bg-muted",
                 outline: "bg-transparent border",
                 pills: "bg-transparent gap-1",
+                rounded: "bg-transparent p-0 h-auto relative",
             },
         },
         defaultVariants: {
@@ -29,8 +30,8 @@ const tabsListVariants = cva(
  */
 const tabsTriggerVariants = cva(
     [
-        "inline-flex items-center justify-center whitespace-nowrap rounded-sm",
-        "px-3 py-1.5 text-sm font-medium ring-offset-background",
+        "inline-flex items-center justify-center whitespace-nowrap",
+        "px-6 py-3 text-sm font-medium ring-offset-background",
         "transition-all duration-200",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         "disabled:pointer-events-none disabled:opacity-50",
@@ -39,11 +40,13 @@ const tabsTriggerVariants = cva(
         variants: {
             variant: {
                 default:
-                    "data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm",
+                    "rounded-sm data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm",
                 outline:
                     "data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:text-foreground rounded-none",
                 pills:
                     "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full",
+                rounded:
+                    "rounded-t-md bg-white text-[#6e6b7b] shadow-[0_0_16px_rgba(0,0,0,0.16)] data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:font-bold data-[state=active]:shadow-[0_0_24px_rgba(0,0,0,0.24)]",
             },
         },
         defaultVariants: {
@@ -55,7 +58,7 @@ const tabsTriggerVariants = cva(
 interface TabsContextValue {
     value: string;
     onValueChange: (value: string) => void;
-    variant?: "default" | "outline" | "pills";
+    variant?: "default" | "outline" | "pills" | "rounded";
 }
 
 const TabsContext = React.createContext<TabsContextValue | null>(null);

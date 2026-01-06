@@ -25,11 +25,33 @@
 export { Header, type HeaderProps } from "./components/Header";
 export { Logo, type LogoProps } from "./components/Logo";
 export { AvatarIcon, type AvatarIconProps } from "./components/AvatarIcon";
+export {
+    Sidebar,
+    SidebarItem,
+    SidebarSubItem,
+    sidebarVariants,
+    sidebarItemVariants,
+    type SidebarProps,
+    type SidebarItemProps,
+    type SidebarSubItemProps,
+} from "./components/Sidebar";
 
 // P1 Components
 export { Button, buttonVariants, type ButtonProps } from "./components/Button";
 export { Input, inputVariants, type InputProps } from "./components/Input";
 export { Label, labelVariants, type LabelProps } from "./components/Label";
+
+// Theme
+export {
+    ThemeSwitcher,
+    ThemeProvider,
+    useTheme,
+    themeSwitcherVariants,
+    type ThemeSwitcherProps,
+    type ThemeProviderProps,
+    type Theme,
+    type ResolvedTheme,
+} from "./components/ThemeSwitcher";
 
 // P2 Components
 export {

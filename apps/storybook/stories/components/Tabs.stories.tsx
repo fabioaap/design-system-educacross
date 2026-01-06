@@ -250,3 +250,110 @@ export const InCard: Story = {
         </div>
     ),
 };
+
+/**
+ * Tabs com estilo arredondado (Educacross).
+ */
+export const Rounded: Story = {
+    render: () => (
+        <div className="w-full">
+            <div className="relative bg-white rounded-md">
+                {/* Container principal */}
+                <div className="flex items-center justify-between px-6 py-3">
+                    {/* Tabs */}
+                    <Tabs defaultValue="redes" variant="rounded" className="w-auto">
+                        <TabsList variant="rounded" className="gap-0">
+                            <TabsTrigger value="redes" variant="rounded" className="relative z-10 min-w-[132px]">
+                                Redes
+                            </TabsTrigger>
+                            <TabsTrigger value="escolas" variant="rounded" className="relative z-10 min-w-[132px] -ml-3">
+                                Escolas
+                            </TabsTrigger>
+                            <TabsTrigger value="professores" variant="rounded" className="relative z-10 min-w-[132px] -ml-3">
+                                Professores
+                            </TabsTrigger>
+                        </TabsList>
+                    </Tabs>
+                    
+                    {/* Nome da escola */}
+                    <div className="flex items-center gap-2 text-primary">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="w-6 h-6"
+                        >
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                        <span className="text-sm font-bold uppercase">COLÉGIO FLORESTA ENCANTADA</span>
+                    </div>
+                </div>
+                
+                {/* Linha inferior roxa */}
+                <div className="w-full h-0.5 bg-primary" />
+            </div>
+        </div>
+    ),
+};
+
+/**
+ * Tabs arredondadas apenas (sem contexto adicional).
+ */
+export const RoundedSimple: Story = {
+    render: () => (
+        <div className="w-full max-w-2xl">
+            <div className="relative bg-white rounded-md shadow-sm">
+                <Tabs defaultValue="tab1" variant="rounded">
+                    <div className="px-6 py-3">
+                        <TabsList variant="rounded" className="gap-0">
+                            <TabsTrigger value="tab1" variant="rounded" className="relative z-10 min-w-[132px]">
+                                Primeira Tab
+                            </TabsTrigger>
+                            <TabsTrigger value="tab2" variant="rounded" className="relative z-10 min-w-[132px] -ml-3">
+                                Segunda Tab
+                            </TabsTrigger>
+                            <TabsTrigger value="tab3" variant="rounded" className="relative z-10 min-w-[132px] -ml-3">
+                                Terceira Tab
+                            </TabsTrigger>
+                        </TabsList>
+                    </div>
+                    
+                    {/* Linha inferior roxa */}
+                    <div className="w-full h-0.5 bg-primary" />
+                    
+                    <TabsContent value="tab1" className="p-6">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Conteúdo da Primeira Tab</h3>
+                            <p className="text-muted-foreground">
+                                Este é o conteúdo da primeira aba com o novo estilo arredondado.
+                            </p>
+                        </div>
+                    </TabsContent>
+                    <TabsContent value="tab2" className="p-6">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Conteúdo da Segunda Tab</h3>
+                            <p className="text-muted-foreground">
+                                Aqui está o conteúdo da segunda aba.
+                            </p>
+                        </div>
+                    </TabsContent>
+                    <TabsContent value="tab3" className="p-6">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Conteúdo da Terceira Tab</h3>
+                            <p className="text-muted-foreground">
+                                E este é o conteúdo da terceira aba.
+                            </p>
+                        </div>
+                    </TabsContent>
+                </Tabs>
+            </div>
+        </div>
+    ),
+};

@@ -1,0 +1,241 @@
+# Sidebar Component
+
+## Visão Geral
+
+O **Sidebar** é um menu lateral de navegação completo para perfis de professor, oferecendo navegação hierárquica com suporte a itens expansíveis, estados visuais e ação secundária.
+
+## Arquitetura
+
+### Componentes
+
+1. **Sidebar** - Container principal
+2. **SidebarItem** - Item de navegação com ícone e label
+3. **SidebarSubItem** - Subitem indentado para navegação hierárquica
+
+### Tokens Semânticos
+
+```css
+/* Background */
+--background: #1c0f2a (fixo - marca Educacross)
+
+/* Estados dos itens */
+--color-primary-500 (item ativo)
+--color-primary-opacity-16 (item selecionado)
+--color-primary-opacity-8 (hover padrão)
+
+/* Espaçamento */
+--radius-sm: border-radius dos itens
+--radius-md: border-radius do botão
+```
+
+## API
+
+### Sidebar Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `children` | `ReactNode` | - | Itens do menu |
+| `showLogo` | `boolean` | `true` | Exibe logo no topo |
+| `collapsed` | `boolean` | `false` | Colapsa sidebar (80px) |
+| `buttonText` | `string` | - | Texto do botão secundário |
+| `buttonUrl` | `string` | - | URL ao clicar no botão |
+| `onButtonClick` | `() => void` | - | Callback do botão |
+| `className` | `string` | - | Classes adicionais |
+
+### SidebarItem Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `icon` | `IconName` | - | Nome do ícone (react-feather) |
+| `label` | `string` | - | Texto do item |
+| `variant` | `"default" \| "active" \| "selected"` | `"default"` | Variante visual |
+| `expandable` | `boolean` | `false` | Mostra ícone de expansão |
+| `expanded` | `boolean` | `false` | Estado expandido |
+| `onClick` | `() => void` | - | Callback ao clicar |
+
+### SidebarSubItem Props
+
+| Prop | Tipo | Padrão | Descrição |
+|------|------|--------|-----------|
+| `label` | `string` | - | Texto do subitem |
+| `active` | `boolean` | `false` | Aplica estilo ativo |
+| `onClick` | `() => void` | - | Callback ao clicar |
+
+## Variantes dos Itens
+
+### default
+Item padrão com hover sutil.
+
+### active
+Item atualmente ativo (background primary-500).
+
+### selected
+Item selecionado com subitens visíveis (background primary-opacity-16).
+
+## Exemplos de Uso
+
+### Básico
+
+```tsx
+import { Sidebar, SidebarItem } from "@educacross/ui";
+
+<Sidebar showLogo buttonText="Acessar app">
+  <SidebarItem icon="Grid" label="Painel" variant="active" />
+  <SidebarItem icon="Flag" label="Missões" variant="default" />
+  <SidebarItem icon="Users" label="Turmas" variant="default" />
+</Sidebar>
+```
+
+### Com Subitens Expansíveis
+
+```tsx
+import { useState } from "react";
+import { Sidebar, SidebarItem, SidebarSubItem } from "@educacross/ui";
+
+function MyMenu() {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <Sidebar showLogo>
+      <SidebarItem
+        icon="Flag"
+        label="Missões"
+        variant="selected"
+        expandable
+        expanded={expanded}
+        onClick={() => setExpanded(!expanded)}
+      />
+      {expanded && (
+        <>
+          <SidebarSubItem label="Missões arquivadas" />
+          <SidebarSubItem label="Ranking" active />
+        </>
+      )}
+    </Sidebar>
+  );
+}
+```
+
+### Menu Completo do Professor
+
+```tsx
+import { MenuProfessor } from "./examples/MenuProfessor";
+
+// Renderizar menu completo com todas as opções
+<MenuProfessor />
+```
+
+## Acessibilidade
+
+- ✅ Navegação por teclado (foco visível)
+- ✅ Estados hover/active/focus distintos
+- ✅ Estrutura semântica (`<nav>`, `<button>`)
+- ✅ Contraste WCAG AA (3:1+ para UI)
+- ✅ Indicadores visuais de estado expandido
+
+## Layout
+
+### Dimensões
+
+- **Largura expandida**: 260px
+- **Largura colapsada**: 80px
+- **Altura**: 100vh (tela completa)
+- **Padding interno**: 20px (horizontal)
+- **Espaçamento entre itens**: 5px
+
+### Hierarquia Visual
+
+```
+┌─────────────────────────────┐
+│         Logo (40px)         │
+├─────────────────────────────┤
+│                             │
+│  ┌─────────────────────┐   │
+│  │ Item Padrão         │   │ ← default
+│  └─────────────────────┘   │
+│                             │
+│  ╔═════════════════════╗   │
+│  ║ Item Ativo          ║   │ ← active (bg primary-500)
+│  ╚═════════════════════╝   │
+│                             │
+│  ┌─────────────────────┐▼  │
+│  │ Item Expansível     │   │ ← selected (bg primary-opacity-16)
+│  ├─────────────────────┤   │
+│  │  • Subitem 1        │   │ ← subitem
+│  │  • Subitem 2        │   │
+│  └─────────────────────┘   │
+│                             │
+│         ...                 │
+│                             │
+├─────────────────────────────┤
+│  [Acessar aplicativo]  →   │ ← Botão secundário
+└─────────────────────────────┘
+```
+
+## Performance
+
+- ✅ Transições CSS (200ms)
+- ✅ SVG inline para ícones
+- ✅ Scroll overflow-y apenas na área de navegação
+- ✅ Logo e botão fixos (não scrollam)
+
+## Testes
+
+17 testes cobrindo:
+- ✅ Renderização de sidebar, logo e botão
+- ✅ Estados collapsed/expanded
+- ✅ Variantes dos itens (default/active/selected)
+- ✅ Callbacks onClick
+- ✅ Indicadores visuais de expansão
+- ✅ Renderização de subitens
+
+## Migração do Código Original
+
+Se você está migrando do código CSS Module:
+
+### Antes (CSS Modules)
+```tsx
+// MenuProfessor.module.css
+<div className={styles.menuProfessor}>
+  <div className={styles.itemDeNavegao3}>
+    <img className={styles.icon} />
+    <div className={styles.kanban}>Criar missão</div>
+  </div>
+</div>
+```
+
+### Depois (Design System)
+```tsx
+<Sidebar showLogo buttonText="Acessar aplicativo">
+  <SidebarItem icon="Plus" label="Criar missão" variant="active" />
+</Sidebar>
+```
+
+### Benefícios da Migração
+
+- 📦 **90% menos código** (de ~400 linhas CSS para componente reutilizável)
+- 🎨 **Tokens semânticos** (suporte automático Light/Dark)
+- ♿ **Acessibilidade integrada** (foco, keyboard, ARIA)
+- 🧪 **Cobertura de testes** (17 testes automatizados)
+- 📚 **Documentação automática** (Storybook + TypeScript)
+- 🔄 **Reutilizável** (mesmo componente para diferentes perfis)
+
+## Roadmap
+
+### Futuras Melhorias
+
+- [ ] Suporte a badges/counters nos itens
+- [ ] Animação de transição ao expandir/colapsar
+- [ ] Suporte a múltiplos níveis de hierarquia (3+ níveis)
+- [ ] Modo "compact" (ícones menores, sem padding)
+- [ ] Suporte a ícones customizados (SVG próprios)
+- [ ] Integração com React Router/Next.js (activeClassName automático)
+- [ ] Keyboard shortcuts (teclas de atalho)
+- [ ] Search/filtro de itens
+
+## Links
+
+- [Storybook - Sidebar](http://localhost:6006/?path=/docs/components-sidebar--docs)
+- [Código Fonte - Sidebar.tsx](../../packages/ui/src/components/Sidebar/Sidebar.tsx)
+- [Testes - Sidebar.test.tsx](../../packages/ui/src/components/Sidebar/Sidebar.test.tsx)
+- [Exemplo - MenuProfessor.tsx](./examples/MenuProfessor.tsx)
