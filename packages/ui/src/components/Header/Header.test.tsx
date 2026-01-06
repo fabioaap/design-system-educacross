@@ -10,7 +10,6 @@ describe("Header", () => {
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                 />
             );
             expect(screen.getByRole("banner")).toBeInTheDocument();
@@ -21,7 +20,6 @@ describe("Header", () => {
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                 />
             );
             expect(screen.getByText("Afonso")).toBeInTheDocument();
@@ -32,7 +30,6 @@ describe("Header", () => {
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                 />
             );
             expect(screen.getByText("Gestor de Redes")).toBeInTheDocument();
@@ -43,7 +40,6 @@ describe("Header", () => {
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                 />
             );
             const logo = screen.getByAltText("Educacross");
@@ -56,21 +52,20 @@ describe("Header", () => {
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                 />
             );
             expect(screen.getByLabelText("Abrir menu")).toBeInTheDocument();
         });
 
-        it("deve renderizar avatar com fallback", () => {
+        it("deve renderizar avatar com ícone educacross", () => {
             render(
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                 />
             );
-            expect(screen.getByText("AF")).toBeInTheDocument();
+            const avatarIcon = screen.getByAltText("Avatar Educacross");
+            expect(avatarIcon).toBeInTheDocument();
         });
     });
 
@@ -83,7 +78,6 @@ describe("Header", () => {
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                     onMenuClick={handleMenuClick}
                 />
             );
@@ -100,7 +94,6 @@ describe("Header", () => {
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                     onProfileClick={handleProfileClick}
                 />
             );
@@ -116,7 +109,6 @@ describe("Header", () => {
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                 />
             );
             expect(screen.getByRole("banner")).toBeInTheDocument();
@@ -127,7 +119,6 @@ describe("Header", () => {
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                 />
             );
             const menuButton = screen.getByLabelText("Abrir menu");
@@ -139,7 +130,6 @@ describe("Header", () => {
                 <Header
                     userName="Maria"
                     userRole="Coordenadora"
-                    avatarFallback="MA"
                 />
             );
             const profileButton = screen.getByLabelText("Perfil de Maria");
@@ -151,7 +141,6 @@ describe("Header", () => {
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                 />
             );
             const profileButton = screen.getByLabelText("Perfil de Afonso");
@@ -165,7 +154,6 @@ describe("Header", () => {
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                 />
             );
             const header = container.querySelector("header");
@@ -177,7 +165,6 @@ describe("Header", () => {
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                     shadow={false}
                 />
             );
@@ -190,7 +177,6 @@ describe("Header", () => {
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                     className="custom-header"
                 />
             );
@@ -206,22 +192,21 @@ describe("Header", () => {
                     userName="Afonso"
                     userRole="Gestor de Redes"
                     avatarSrc="https://example.com/avatar.jpg"
-                    avatarFallback="AF"
                 />
             );
             const avatar = screen.getByAltText("Afonso");
             expect(avatar).toBeInTheDocument();
         });
 
-        it("deve renderizar fallback quando sem avatarSrc", () => {
+        it("deve renderizar ícone educacross quando sem avatarSrc", () => {
             render(
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                 />
             );
-            expect(screen.getByText("AF")).toBeInTheDocument();
+            const avatarIcon = screen.getByAltText("Avatar Educacross");
+            expect(avatarIcon).toBeInTheDocument();
         });
     });
 
@@ -233,7 +218,6 @@ describe("Header", () => {
                     ref={ref}
                     userName="Afonso"
                     userRole="Gestor de Redes"
-                    avatarFallback="AF"
                 />
             );
             expect(ref.current).toBeInstanceOf(HTMLElement);

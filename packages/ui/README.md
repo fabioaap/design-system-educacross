@@ -84,8 +84,7 @@ function LoginForm() {
 ### Branding
 | Componente | Descrição |
 |------------|-----------|
-| `Logo` | Logo Educacross com variantes de tamanho (sm, default, lg) |
-| `Header` | Cabeçalho padrão com menu, logo e perfil do usuário |
+| `Logo` | Logo Educacross com variantes de tamanho (sm, default, lg) || `AvatarIcon` | Ícone Educacross para usar em avatares sem foto || `Header` | Cabeçalho padrão com menu, logo e perfil do usuário |
 
 ### Formulários
 | Componente | Descrição |

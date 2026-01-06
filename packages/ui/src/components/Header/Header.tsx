@@ -2,6 +2,7 @@ import * as React from "react";
 import { Menu } from "react-feather";
 import { cn } from "../../utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../Avatar";
+import { AvatarIcon } from "../AvatarIcon";
 import { Button } from "../Button";
 import { Logo } from "../Logo";
 
@@ -22,10 +23,6 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
      */
     avatarSrc?: string;
     /**
-     * Fallback para o avatar (iniciais).
-     */
-    avatarFallback?: string;
-    /**
      * Callback quando o menu hamburger é clicado.
      */
     onMenuClick?: () => void;
@@ -42,6 +39,7 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
 
 /**
  * Header - componente de cabeçalho da aplicação Educacross.
+ * Usa o ícone Educacross como fallback do avatar quando não há imagem.
  *
  * @example
  * ```tsx
@@ -49,7 +47,6 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
  *   userName="Afonso"
  *   userRole="Gestor de Redes"
  *   avatarSrc="/avatar.jpg"
- *   avatarFallback="AF"
  *   onMenuClick={() => console.log("Menu clicked")}
  * />
  * ```
@@ -60,7 +57,6 @@ export const Header = React.forwardRef<HTMLElement, HeaderProps>(
             userName,
             userRole,
             avatarSrc,
-            avatarFallback,
             onMenuClick,
             onProfileClick,
             shadow = true,
@@ -117,8 +113,8 @@ export const Header = React.forwardRef<HTMLElement, HeaderProps>(
                     </div>
                     <Avatar size="lg" className="border-2 border-[#06B6D4]">
                         <AvatarImage src={avatarSrc} alt={userName} />
-                        <AvatarFallback className="bg-[#06B6D4] text-white font-semibold">
-                            {avatarFallback}
+                        <AvatarFallback className="bg-[#06B6D4] flex items-center justify-center">
+                            <AvatarIcon size="lg" />
                         </AvatarFallback>
                     </Avatar>
                 </button>

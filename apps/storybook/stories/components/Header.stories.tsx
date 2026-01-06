@@ -21,10 +21,6 @@ const meta = {
             control: "text",
             description: "URL da imagem do avatar",
         },
-        avatarFallback: {
-            control: "text",
-            description: "Fallback do avatar (iniciais)",
-        },
         shadow: {
             control: "boolean",
             description: "Se o header tem sombra",
@@ -38,26 +34,24 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * Header padrão com perfil de Gestor de Redes.
+ * Header padrão com perfil de Gestor de Redes e ícone Educacross no avatar.
  */
 export const Default: Story = {
     args: {
         userName: "Afonso",
         userRole: "Gestor de Redes",
-        avatarFallback: "AF",
         shadow: true,
     },
 };
 
 /**
- * Header com avatar personalizado.
+ * Header com avatar personalizado (foto).
  */
 export const WithAvatar: Story = {
     args: {
         userName: "Maria Silva",
         userRole: "Coordenadora Pedagógica",
         avatarSrc: "https://api.dicebear.com/7.x/avataaars/svg?seed=Maria",
-        avatarFallback: "MS",
         shadow: true,
     },
 };
@@ -69,7 +63,6 @@ export const WithLongName: Story = {
     args: {
         userName: "João Pedro da Silva Santos",
         userRole: "Diretor Regional de Educação",
-        avatarFallback: "JP",
         shadow: true,
     },
 };
@@ -81,7 +74,6 @@ export const NoShadow: Story = {
     args: {
         userName: "Carlos",
         userRole: "Administrador",
-        avatarFallback: "CA",
         shadow: false,
     },
 };
@@ -93,7 +85,6 @@ export const InContext: Story = {
     args: {
         userName: "Ana Paula",
         userRole: "Gestor de Redes",
-        avatarFallback: "AP",
     },
     render: (args) => (
         <div className="min-h-screen bg-background">
@@ -109,7 +100,7 @@ export const InContext: Story = {
 };
 
 /**
- * Variações de roles.
+ * Variações de roles com ícone Educacross no avatar.
  */
 export const DifferentRoles: Story = {
     render: () => (
@@ -117,22 +108,18 @@ export const DifferentRoles: Story = {
             <Header
                 userName="Afonso"
                 userRole="Gestor de Redes"
-                avatarFallback="AF"
             />
             <Header
                 userName="Beatriz"
                 userRole="Coordenadora Pedagógica"
-                avatarFallback="BE"
             />
             <Header
                 userName="Carlos"
                 userRole="Professor"
-                avatarFallback="CA"
             />
             <Header
                 userName="Diana"
                 userRole="Administrador do Sistema"
-                avatarFallback="DI"
             />
         </div>
     ),

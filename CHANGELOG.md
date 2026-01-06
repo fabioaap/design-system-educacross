@@ -11,7 +11,8 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 #### Branding
 - `Logo` - Componente reutilizável da logo Educacross com 3 tamanhos (sm, default, lg)
-- `Header` - Componente de cabeçalho com menu, logo e perfil do usuário
+- `AvatarIcon` - Ícone Educacross para usar em avatares quando não há foto do usuário
+- `Header` - Componente de cabeçalho com menu, logo e perfil do usuário com avatar
 - Integração de assets SVG no sistema de build (tsup + cópia para dist)
 - Suporte TypeScript para importação de SVGs e imagens
 
@@ -74,8 +75,8 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 - Configuração `type: module` adicionada ao package.json raiz
 
 ### Tests
-- 509 testes unitários cobrindo todos os componentes (94% cobertura)
-- Testes para Logo (11), Header (18)
+- 520 testes unitários cobrindo todos os componentes (94% cobertura)
+- Testes para AvatarIcon (11), Logo (11), Header (18)
 - Testes para Accordion (13), Avatar (17), DropdownMenu (21), Icon (29)
 - Testes para Pagination (17), Popover (15), Tabs (12), Tooltip (13)
 - Testes para Badge (16), Card (25), Skeleton (30), Table (29)
