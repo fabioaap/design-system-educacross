@@ -58,13 +58,13 @@ describe("Header", () => {
         });
 
         it("deve renderizar avatar com ícone educacross", () => {
-            const { container } = render(
+            render(
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
                 />
             );
-            const avatarIcon = container.querySelector('circle[fill="#00CFE8"]');
+            const avatarIcon = screen.getByAltText("Avatar Educacross");
             expect(avatarIcon).toBeInTheDocument();
         });
     });
@@ -199,13 +199,13 @@ describe("Header", () => {
         });
 
         it("deve renderizar ícone educacross quando sem avatarSrc", () => {
-            const { container } = render(
+            render(
                 <Header
                     userName="Afonso"
                     userRole="Gestor de Redes"
                 />
             );
-            const avatarIcon = container.querySelector('circle[fill="#00CFE8"]');
+            const avatarIcon = screen.getByAltText("Avatar Educacross");
             expect(avatarIcon).toBeInTheDocument();
         });
     });
