@@ -23,7 +23,7 @@
     "@playwright/test": "^1.57.0",
     "@types/node": "^22.10.0",
     "eslint": "^9.17.0",
-    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
     "playwright": "^1.57.0",
